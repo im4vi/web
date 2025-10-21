@@ -5,14 +5,12 @@ layout: compress
 <!doctype html>
 
 {% include origin-type.html %}
-
 {% include lang.html %}
 
 {% if site.theme_mode %}
   {% capture prefer_mode %}data-mode="{{ site.theme_mode }}"{% endcapture %}
 {% endif %}
 
-<!-- `site.alt_lang` can specify a language different from the UI -->
 <html lang="{{ page.lang | default: site.alt_lang | default: site.lang }}" {{ prefer_mode }}>
   {% include head.html %}
 
@@ -75,6 +73,20 @@ layout: compress
     {% endif %}
 
     <!-- Embedded scripts -->
+    <script src="{{ '/assets/js/dist/commons.min.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/dist/theme.min.js' | relative_url }}"></script>
+
+    <!-- Force theme toggle listener -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggle = document.getElementById("mode-toggle");
+        if (toggle && typeof Theme !== "undefined") {
+          toggle.addEventListener("click", () => {
+            Theme.flip();
+          });
+        }
+      });
+    </script>
 
     {% for _include in layout.script_includes %}
       {% assign _include_path = _include | append: '.html' %}

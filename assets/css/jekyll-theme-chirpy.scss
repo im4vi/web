@@ -9,3 +9,23 @@
 ';
 
 /* append your custom style below */
+
+#avatar {
+  width: 60px;           /* tamaño del contenedor */
+  height: 60px;
+  border-radius: 50%;    /* lo hace circular */
+  overflow: hidden;      /* recorta bordes de la imagen */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* mantiene proporciones y recorta */
+  object-position: center top; /* centra horizontal y baja verticalmente */
+  display: block;
+}
+
+

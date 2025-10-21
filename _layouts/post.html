@@ -55,30 +55,29 @@ script_includes:
 
       <div class="d-flex justify-content-between">
         <!-- author(s) -->
-        <span>
+        <div class="post-authors d-flex align-items-center">
           {% if page.author %}
-            {% assign authors = page.author %}
+            {% assign authors = page.author | split: "," %}
           {% elsif page.authors %}
             {% assign authors = page.authors %}
           {% endif %}
 
           {{ site.data.locales[lang].post.written_by }}
 
-          <em>
-            {% if authors %}
-              {% for author in authors %}
-                {% if site.data.authors[author].url -%}
-                  <a href="{{ site.data.authors[author].url }}">{{ site.data.authors[author].name }}</a>
-                {%- else -%}
-                  {{ site.data.authors[author].name }}
-                {%- endif %}
-                {% unless forloop.last %}{{ '</em>, <em>' }}{% endunless %}
-              {% endfor %}
-            {% else %}
-              <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>
+          {% for author in authors %}
+            {% assign a = site.data.authors[author] %}
+
+            {% if a.avatar %}
+              <img src="{{ a.avatar }}" alt="{{ a.name }}" class="author-avatar rounded-circle me-2" width="32" height="32">
             {% endif %}
-          </em>
-        </span>
+
+            {% if a.url %}
+              <a href="{{ a.url }}" class="me-3">{{ a.name }}</a>
+            {% else %}
+              <span class="me-3">{{ a.name }}</span>
+            {% endif %}
+          {% endfor %}
+        </div>
 
         <div>
           <!-- pageviews -->

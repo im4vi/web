@@ -10,20 +10,20 @@ layout:
 # The tabs of sidebar
 tabs:
   # format: <filename_without_extension>: <value>
-  home: Home
-  categories: Categories
-  tags: Tags
-  archives: Archives
-  about: About
+  home: Inicio
+  categories: Categorías
+  tags: Etiquetas
+  archives: Archivos
+  about: Contacto
 
 # the text displayed in the search bar & search results
 search:
   hint: search
   cancel: Cancel
-  no_results: Oops! No results found.
+  no_results: Oops! No hay resultados.
 
 panel:
-  lastmod: Recently Updated
+  lastmod: Actualizado recientemente
   trending_tags: Trending Tags
   toc: Contents
 

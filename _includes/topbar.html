@@ -11,7 +11,6 @@
       {% if paths.size == 0 or page.layout == 'home' %}
         <!-- index page -->
         <span>{{ site.data.locales[include.lang].tabs.home | capitalize }}</span>
-
       {% else %}
         {% for item in paths %}
           {% if forloop.first %}
@@ -20,14 +19,12 @@
                 {{- site.data.locales[include.lang].tabs.home | capitalize -}}
               </a>
             </span>
-
           {% elsif forloop.last %}
             {% if page.collection == 'tabs' %}
               <span>{{ site.data.locales[include.lang].tabs[item] | default: page.title }}</span>
             {% else %}
               <span>{{ page.title }}</span>
             {% endif %}
-
           {% elsif page.layout == 'category' or page.layout == 'tag' %}
             <span>
               <a href="{{ item | append: '/' | relative_url }}">
@@ -58,6 +55,13 @@
     <button type="button" id="search-trigger" class="btn btn-link" aria-label="Search">
       <i class="fas fa-search fa-fw"></i>
     </button>
+
+{%- comment -%}
+    <!-- Theme mode toggle -->
+    <button type="button" id="mode-toggle" class="btn btn-link" aria-label="Toggle Theme">
+      <i class="fas fa-adjust"></i>
+    </button>
+{%- endcomment -%}
 
     <search id="search" class="align-items-center ms-3 ms-lg-0">
       <i class="fas fa-search fa-fw"></i>
