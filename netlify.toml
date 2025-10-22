@@ -4,4 +4,4 @@
 
 [build.environment]
   RUBY_VERSION = "3.3.8"
-  BUNDLER_VERSION = "2.7.2"
+  BUNDLER_VERSION = "2.5.22"
